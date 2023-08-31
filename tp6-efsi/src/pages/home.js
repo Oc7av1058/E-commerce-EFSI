@@ -2,6 +2,7 @@ import react from 'react';
 import { Link } from "react-router-dom";
 import Carousel from '../components/carousel';
 import MostrarProducto from '../components/mostrarProductos';
+import ProductoProvider from '../context/productosContext';
 export default function Home() {
 
     return (
@@ -53,7 +54,9 @@ export default function Home() {
 
 
             {/* aca abajo estan los productos*/}
-            <MostrarProducto/>
+            <ProductoProvider>
+                <MostrarProducto/>
+            </ProductoProvider>
         </>
 
     )

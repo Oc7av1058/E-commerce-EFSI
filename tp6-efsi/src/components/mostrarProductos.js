@@ -1,8 +1,11 @@
 import react from 'react';
+import React, { useContext } from 'react'
 import { Link, Outlet } from "react-router-dom";
+import { ProductoContext } from '../context/productosContext';
+export default function  MostrarProducto() {
 
-export default function MostrarProducto() {
-
+    const productos =  useContext(ProductoContext);
+    console.log(productos);
     return(
 <>
 <div class="container-fluid pt-5">
@@ -16,7 +19,7 @@ export default function MostrarProducto() {
                                 <img class="img-fluid w-100" src="imagenes/product-1.jpg" alt="" />
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <h6 class="text-truncate mb-3">aca va el title</h6>
                                 <div class="d-flex justify-content-center">
                                     <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>

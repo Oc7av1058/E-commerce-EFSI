@@ -1,25 +1,31 @@
 import React,{createContext,useState} from 'react';
-
+import axios from 'axios';
 export const ProductoContext = createContext();
 
 const ProductoProvider = (props) => {
-    const [producto, setProducto] = useState([{
-        id:1,
-        nombre: "vestido blanco",
-        precio: 100,
-        imagen: ""
+   
+    const [productos, setProducto] = useState({});    
+    
+    axios
+    .get("https://dummyjson.com/products")
+    .then((result) => {
+        
+        setProducto(result.data.products);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
-    }]);    
-const nombre = 'hola';
+
     return (
-        <PersonasContext.Provider
+        <ProductoContext.Provider
             value={               
-                producto  
+                productos 
             }
         >
             {props.children}
-        </PersonasContext.Provider>
+        </ProductoContext.Provider>
     )
 }
 
-export default PersonasProvider;
+export default ProductoProvider;
