@@ -54,9 +54,9 @@ export default function Home() {
 
 
             {/* aca abajo estan los productos*/}
-            <ProductoProvider>
+            
                 <MostrarProducto/>
-            </ProductoProvider>
+            
         </>
 
     )

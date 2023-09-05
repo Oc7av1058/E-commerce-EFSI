@@ -4,7 +4,7 @@ import Home from "./pages/home";
 import Contacto from "./pages/contacto";
 import DetalleProducto from "./pages/detalleProducto";
 import Producto from "./pages/productos";
-
+import ProductoProvider from "./context/productosContext";
 
 function App() {
 
@@ -12,6 +12,7 @@ function App() {
     
     
    <>
+   <ProductoProvider>
     <BrowserRouter>
        <Routes>
           <Route path="/" element={<Layout />}>
@@ -19,12 +20,11 @@ function App() {
             <Route path="/contacto" element={<Contacto/>}></Route>
             <Route path="/detalleProducto/:id" element={<DetalleProducto/>}></Route>
             <Route path="/productos" element={<Producto/>}></Route>
-          </Route>
-	        
+          </Route>        
 
        </Routes>
      </BrowserRouter>
-   
+    </ProductoProvider>
  
      
     
