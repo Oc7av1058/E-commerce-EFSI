@@ -2,7 +2,6 @@ import react from 'react';
 import { Link, Outlet } from "react-router-dom";
 
 export default function ProductoCard(producto) {
-    console.log("entre al producto card")
     console.log("producto", producto.producto);
     
     const { id, title, description, price, category, images } = producto.producto;
@@ -22,7 +21,7 @@ export default function ProductoCard(producto) {
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <Link to={"/detalleProducto/"+ id}  class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</Link>
+                        <Link to={`/detalleProducto/${id}`}   class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</Link>
                         <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                     </div>
                 </div>

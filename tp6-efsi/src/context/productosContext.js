@@ -3,14 +3,26 @@ import axios from 'axios';
 export const ProductoContext = createContext();
 
 const ProductoProvider = (props) => {   
-    const [productos, setProducto] = useState([]);    
-    
+    const [productos, setProductos] = useState([]);    
+    const [producto, setProducto] = useState({}); 
     const getProductos = async () =>{        
         await axios
         .get("https://dummyjson.com/products")
         .then((result) => {
             
-            setProducto(result.data.products);
+            setProductos(result.data.products);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
+    const getProductosById = async (id) =>{        
+        await axios
+        .get(`https://dummyjson.com/products/${id}`)
+        .then((result) => {
+            console.log("llegue al getProductosById")
+            setProducto(result.data);
+            console.log("producto recien obtenido con el id:", producto)
         })
         .catch((error) => {
             console.log(error);
@@ -26,7 +38,9 @@ const ProductoProvider = (props) => {
         <ProductoContext.Provider
             value={{               
                 productos,
-                getProductos 
+                producto,
+                getProductos,
+                getProductosById, 
             }}
         >
             {props.children}

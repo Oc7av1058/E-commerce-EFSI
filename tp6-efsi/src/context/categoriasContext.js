@@ -4,13 +4,14 @@ import axios from 'axios';
 export const CategoriaContext = createContext();
 
 const CategoriaProvider = (props) => {
-    const [categoria, setCategoria] = useState([{}]);
+    const [categorias, setCategorias] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(null);
     const getCategorias = async () =>{        
         await axios
         .get("https://dummyjson.com/products/categories")
         .then((result) => {
             
-            setCategoria(result.data);
+            setCategorias(result.data);
         })
         .catch((error) => {
           console.log(error);
@@ -24,8 +25,10 @@ const CategoriaProvider = (props) => {
     return (
         <CategoriaContext.Provider
             value={{         
-                categoria,
-                getCategorias
+                categorias,
+                getCategorias,
+                selectedCategory,
+                setSelectedCategory
             }
             }
         >
