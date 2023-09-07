@@ -15,9 +15,8 @@ export default function  MostrarProducto() {
                     <h2 class="section-title px-5"><span class="px-2">Trandy Products</span></h2>
                 </div>
                 <div class="row px-xl-5 pb-3">
-                    {productos.map((prod) => (
-                        <ProductoCard producto={prod}/>
-                        )
+                    {
+                        productos.map((prod) => <ProductoCard producto={prod}/>
                     )
                     }                    
                 </div>

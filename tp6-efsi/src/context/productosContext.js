@@ -3,7 +3,7 @@ import axios from 'axios';
 export const ProductoContext = createContext();
 
 const ProductoProvider = (props) => {   
-    const [productos, setProducto] = useState({});    
+    const [productos, setProducto] = useState([]);    
     
     const getProductos = async () =>{        
         await axios
