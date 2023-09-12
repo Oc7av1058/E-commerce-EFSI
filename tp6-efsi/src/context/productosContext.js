@@ -29,6 +29,19 @@ const ProductoProvider = (props) => {
         });
     }
 
+    const getProductosByCategoria = async (categoria) =>{        
+        await axios
+        .get(`https://dummyjson.com/products/category/${categoria}}`)
+        .then((result) => {
+            console.log("llegue al getProductosByCategoria")
+            setProductos(result.data.products);
+           
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
+
     useEffect(() => {
         console.log('se va a cargar los productos')
         getProductos();
@@ -41,6 +54,7 @@ const ProductoProvider = (props) => {
                 producto,
                 getProductos,
                 getProductosById, 
+                getProductosByCategoria
             }}
         >
             {props.children}

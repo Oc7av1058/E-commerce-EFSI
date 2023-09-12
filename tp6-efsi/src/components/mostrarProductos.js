@@ -16,8 +16,11 @@ export default function  MostrarProducto() {
                 </div>
                 <div class="row px-xl-5 pb-3">
                     {
-                        productos.map((prod) => <ProductoCard producto={prod}/>
-                    )
+                        productos.map((prod) => (
+                        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <ProductoCard producto={prod}/>
+                        </div>
+                        ))
                     }                    
                 </div>
             </div>

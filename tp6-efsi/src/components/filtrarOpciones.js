@@ -1,8 +1,11 @@
 import react from 'react';
-import { Link, Outlet } from "react-router-dom";
+import React, { useContext } from 'react'
+import { Link, Outlet,  } from "react-router-dom";
+import { CategoriaContext } from '../context/categoriasContext';
 
 export default function FiltrarOpciones() {
-
+    const {categorias, setSelectedCategory} = useContext(CategoriaContext);
+    console.log(categorias);
     return(
 <>
 {/* Shop Sidebar Start */}
@@ -10,6 +13,22 @@ export default function FiltrarOpciones() {
                 {/* Price Start */}
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
+                    <button onClick={()=>setSelectedCategory(null)}>Eliminar filtro</button>
+                    {categorias.map((element) =>(
+                        <div key={element}>
+                            <ul className='list-unstyled mb-0'>
+                                <li className='mb-1'>
+                                    <a
+                                     href='#'
+                                     className='d-flex'
+                                     onClick={()=> setSelectedCategory(element)}>
+                                        {element}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    ))}
+                    {/* 
                     <form>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" checked id="price-all"/>
@@ -41,11 +60,12 @@ export default function FiltrarOpciones() {
                             <label class="custom-control-label" for="price-5">$400 - $500</label>
                             <span class="badge border font-weight-normal">168</span>
                         </div>
-                    </form>
+                    </form>*/}
                 </div>
+                
                 {/* Price End */}
                 
-                {/* Color Start */}
+                {/* Color Start 
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Filter by color</h5>
                     <form>
@@ -81,9 +101,9 @@ export default function FiltrarOpciones() {
                         </div>
                     </form>
                 </div>
-                {/* Color End */}
+                 Color End */}
 
-                {/* Size Start */}
+                {/* Size Start 
                 <div class="mb-5">
                     <h5 class="font-weight-semi-bold mb-4">Filter by size</h5>
                     <form>
@@ -119,7 +139,7 @@ export default function FiltrarOpciones() {
                         </div>
                     </form>
                 </div>
-                {/* Size End */}
+                 Size End */}
             </div>
             {/* Shop Sidebar End */}
 </>
