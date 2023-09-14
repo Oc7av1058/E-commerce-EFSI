@@ -14,7 +14,7 @@ export default function InfoProducto(producto) {
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
                         <div class="carousel-item active">
-                            <img class="producto" src={images} alt="image"/>                          
+                            <img class="producto" src={images[1]} alt="imagesdfsdf"/>                          
                         </div>
                     </div>
                 </div>          

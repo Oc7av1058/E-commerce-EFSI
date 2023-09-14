@@ -47,7 +47,7 @@ const ProductoProvider = (props) => {
                     console.log(error);
                 });
         }
-    }
+}
 
     useEffect(() => {
         console.log('se va a cargar los productos');

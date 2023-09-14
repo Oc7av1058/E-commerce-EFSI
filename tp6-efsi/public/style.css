@@ -92,6 +92,6 @@ html {
   width: 45px;
 }
 .producto{
-  width:100px;
-  height:100px;
+  width:400px;
+  height:"auto";
 }

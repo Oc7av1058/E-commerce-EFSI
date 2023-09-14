@@ -10,7 +10,7 @@ export default function FiltrarProducto() {
     const {productos, getProductosByCategoria} =  useContext(ProductoContext);
     useEffect(() => {
         getProductosByCategoria(selectedCategory);
-   }); 
+   },[selectedCategory]); 
     return(
 <>
 <div class="container-fluid pt-5">
