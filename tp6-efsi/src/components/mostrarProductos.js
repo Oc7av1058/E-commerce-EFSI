@@ -6,7 +6,7 @@ import ProductoCard from './productoCard';
 export default function  MostrarProducto() {
 
     const {productos} =  useContext(ProductoContext);
-    console.log("productos: ",productos);
+    //console.log("productos: ",productos);
     //console.log(productos);
     return(
 <>

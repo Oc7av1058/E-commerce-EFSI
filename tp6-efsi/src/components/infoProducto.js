@@ -2,7 +2,8 @@ import react from 'react';
 import { Link, Outlet } from "react-router-dom";
 
 export default function InfoProducto(producto) {
-
+    console.log ("producto: ",producto.producto);
+    const { id, title, description, price, category, images } = producto.producto;
     return(
 <>
 
@@ -13,7 +14,7 @@ export default function InfoProducto(producto) {
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
                         <div class="carousel-item active">
-                            <img class="producto" src="imagenes/product-1.jpg" alt="image"/>                          
+                            <img class="producto" src={images} alt="image"/>                          
                         </div>
                     </div>
                 </div>          
@@ -21,7 +22,7 @@ export default function InfoProducto(producto) {
                 
                 
             <div class="col-lg-7 pb-5">
-                <h3 class="font-weight-semi-bold">Colorful Stylish Shirt</h3>
+                <h3 class="font-weight-semi-bold">{title}</h3>
                 <div class="d-flex mb-3">
                     <div class="text-primary mr-2">
                         <small class="fas fa-star"></small>
@@ -32,9 +33,10 @@ export default function InfoProducto(producto) {
                     </div>
                     <small class="pt-1">(50 Reviews)</small>
                 </div>
-                <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
-                <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc invidunt ipsum et, labore clita lorem magna lorem ut. Erat lorem duo dolor no sea nonumy. Accus labore stet, est lorem sit diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd rebum.</p>
+                <h3 class="font-weight-semi-bold mb-4">${price}</h3>
+                <p class="mb-4">{description}</p>
                 <div class="d-flex mb-3">
+                    {/*
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                     <form>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -83,7 +85,8 @@ export default function InfoProducto(producto) {
                             <label class="custom-control-label" for="color-5">Green</label>
                         </div>
                     </form>
-                </div>
+                </div>  
+                */}
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3 style5" >
                         <div class="input-group-btn">
@@ -119,6 +122,7 @@ export default function InfoProducto(producto) {
                 </div>
             </div>
         </div>
+</div>        
     </>
     )
 

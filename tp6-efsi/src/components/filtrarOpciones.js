@@ -12,8 +12,8 @@ export default function FiltrarOpciones() {
 <div class="col-lg-3 col-md-12">
                 {/* Price Start */}
                 <div class="border-bottom mb-4 pb-4">
-                    <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
-                    <button onClick={()=>setSelectedCategory(null)}>Eliminar filtro</button>
+                    <h5 class="font-weight-semi-bold mb-4">Filtrados</h5>
+                    <button onClick={()=>setSelectedCategory(null)}>Mostrar todo</button>
                     {categorias.map((element) =>(
                         <div key={element}>
                             <ul className='list-unstyled mb-0'>

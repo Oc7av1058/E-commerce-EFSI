@@ -2,9 +2,10 @@ import react from 'react';
 import { Link, Outlet } from "react-router-dom";
 
 export default function ProductoCard(producto) {
-    console.log("producto", producto.producto);
+    //console.log("producto", producto.producto);
     
     const { id, title, description, price, category, images } = producto.producto;
+    console.log("el id es", id);
     console.log(images);
     console.log(title);
     return (
