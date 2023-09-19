@@ -1,11 +1,15 @@
 import react from 'react';
 import { Link, Outlet } from "react-router-dom";
 
-export default function InfoProducto(producto) {
-    console.log ("producto: ",producto.producto);
-    const { id, title, description, price, category, images } = producto.producto;
+export default function InfoProducto({producto}) {
+    console.log ("producto: ",producto);
+    const { id, title, description, price, category, images } = producto || {};
     return(
 <>
+
+{!producto ? (
+<div>loading</div>
+):(
 
 
 
@@ -31,7 +35,7 @@ export default function InfoProducto(producto) {
                         <small class="fas fa-star-half-alt"></small>
                         <small class="far fa-star"></small>
                     </div>
-                    <small class="pt-1">(50 Reviews)</small>
+                    <small class="pt-1">(500.000 Reviews)</small>
                 </div>
                 <h3 class="font-weight-semi-bold mb-4">${price}</h3>
                 <p class="mb-4">{description}</p>
@@ -122,7 +126,8 @@ export default function InfoProducto(producto) {
                 </div>
             </div>
         </div>
-</div>        
+</div>  
+)}      
     </>
     )
 

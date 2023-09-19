@@ -4,7 +4,7 @@ export const ProductoContext = createContext();
 
 const ProductoProvider = (props) => {
     const [productos, setProductos] = useState([]);
-    const [producto, setProducto] = useState({});
+    const [producto, setProducto] = useState(null);
     const getProductos = async () => {
         await axios
             .get("https://dummyjson.com/products")
@@ -23,8 +23,7 @@ const ProductoProvider = (props) => {
             .get(`https://dummyjson.com/products/${id}`)
             .then((result) => {
                 
-                setProducto(result.data);
-                console.log("producto recien obtenido con el id:", producto)
+                setProducto(result.data);                
             })
             .catch((error) => {
                 console.log(error);
