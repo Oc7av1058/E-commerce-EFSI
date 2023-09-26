@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import Contacto from "./pages/contacto";
 import DetalleProducto from "./pages/detalleProducto";
 import Producto from "./pages/productos";
+import Carrito from "./pages/carrito";
 import ProductoProvider from "./context/productosContext";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/contacto" element={<Contacto/>}></Route>
             <Route path="/detalleProducto/:id" element={<DetalleProducto/>}></Route>
             <Route path="/productos" element={<Producto/>}></Route>
+            <Route path="/carrito" element={<Carrito/>}></Route>
           </Route>        
 
        </Routes>
