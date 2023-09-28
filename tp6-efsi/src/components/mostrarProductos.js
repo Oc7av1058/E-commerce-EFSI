@@ -4,7 +4,11 @@ import { Link, Outlet } from "react-router-dom";
 import { ProductoContext } from '../context/productosContext';
 import ProductoCard from './productoCard';
 export default function  MostrarProducto() {
-
+    {/*useEffect(() => {
+        console.log("el id que me esta llegando", id);
+        getProductosById(id);        
+    },[productos]);*/}
+    
     const {productos} =  useContext(ProductoContext);
     //console.log("productos: ",productos);
     //console.log(productos);

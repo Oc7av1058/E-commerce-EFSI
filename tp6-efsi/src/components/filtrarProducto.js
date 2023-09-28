@@ -7,7 +7,7 @@ import React, { useContext, useEffect } from 'react'
 import ProductoCard from './productoCard';
 export default function FiltrarProducto() {
     const {selectedCategory} = useContext(CategoriaContext);
-    const {productos, getProductosByCategoria} =  useContext(ProductoContext);
+    const {productosFiltrados, getProductosByCategoria} =  useContext(ProductoContext);
     useEffect(() => {
         getProductosByCategoria(selectedCategory);
    },[selectedCategory]); 
@@ -49,7 +49,7 @@ export default function FiltrarProducto() {
                     </div>
                     
                     {
-                        productos.map((prod) => (
+                        productosFiltrados.map((prod) => (
                         <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                         <ProductoCard producto={prod}/>
                         </div>

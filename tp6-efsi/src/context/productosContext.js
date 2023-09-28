@@ -5,6 +5,7 @@ export const ProductoContext = createContext();
 const ProductoProvider = (props) => {
     const [productos, setProductos] = useState([]);
     const [producto, setProducto] = useState(null);
+    const [productosFiltrados, setProductosFiltrados] = useState([]);
     const getProductos = async () => {
         await axios
             .get("https://dummyjson.com/products")
@@ -32,14 +33,14 @@ const ProductoProvider = (props) => {
 
     const getProductosByCategoria = async (categoria) => {
         if (categoria == null) {
-            await getProductos();
+            setProductosFiltrados(productos);
         }
         else {
             await axios
                 .get(`https://dummyjson.com/products/category/${categoria}`)
                 .then((result) => {
                     console.log("llegue al getProductosByCategoria")
-                    setProductos(result.data.products);
+                    setProductosFiltrados(result.data.products);
 
                 })
                 .catch((error) => {
@@ -47,10 +48,23 @@ const ProductoProvider = (props) => {
                 });
         }
 }
+const getProductosFiltrados = async () => {
+    await axios
+        .get("https://dummyjson.com/products")
+        .then((result) => {
+
+            setProductosFiltrados(result.data.products);
+            
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 
     useEffect(() => {
         console.log('se va a cargar los productos');
         getProductos();
+        getProductosFiltrados();
         console.log(productos)
     }, []);
 
@@ -61,7 +75,10 @@ const ProductoProvider = (props) => {
                 producto,
                 getProductos,
                 getProductosById,
-                getProductosByCategoria
+                getProductosByCategoria,
+                productosFiltrados,
+                setProductosFiltrados,
+                getProductosFiltrados
             }}
         >
             {props.children}
