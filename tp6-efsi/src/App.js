@@ -6,14 +6,16 @@ import DetalleProducto from "./pages/detalleProducto";
 import Producto from "./pages/productos";
 import Carrito from "./pages/carrito";
 import ProductoProvider from "./context/productosContext";
+import CarritoProvider from "./context/carritoContext";
 
 function App() {
 
   return (
     
-    
+    //no se si el carrito provider deberia ir aca o en carrito la page
    <>
    <ProductoProvider>
+    <CarritoProvider>
     <BrowserRouter>
        <Routes>
           <Route path="/" element={<Layout />}>
@@ -26,6 +28,7 @@ function App() {
 
        </Routes>
      </BrowserRouter>
+     </CarritoProvider> 
     </ProductoProvider>
  
      

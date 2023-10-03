@@ -5,9 +5,8 @@ export const CarritoContext = createContext();
 
 const CarritoProvider = (props) => {
     const [productosCarrito, setProductosCarrito] = useState([]);
-    const agregarProducto = async (id) =>{
-    
-
+    const agregarProducto = async (producto) =>{
+        setProductosCarrito(productosCarrito + producto);
     }
 
     {/* 
