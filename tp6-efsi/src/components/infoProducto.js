@@ -1,9 +1,16 @@
-import react from 'react';
-import { Link, Outlet } from "react-router-dom";
+import react, { useContext } from 'react';
+import { CarritoContext } from '../context/carritoContext';
+import { Link, Outlet, useNavigate  } from "react-router-dom";
 
 export default function InfoProducto({producto}) {
+    const navigate = useNavigate ();
     console.log ("producto: ",producto);
     const { id, title, description, price, category, images } = producto || {};
+    const {agregarProducto} = useContext(CarritoContext);
+    const handleOnClick = async ()=>{
+        await agregarProducto(producto);
+        navigate("/carrito");
+    }
     return(
 <>
 
@@ -105,7 +112,7 @@ export default function InfoProducto({producto}) {
                             </button>
                         </div>
                     </div>
-                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                    <button class="btn btn-primary px-3" onClick={handleOnClick}><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button> 
                 </div>
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>

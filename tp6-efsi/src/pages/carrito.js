@@ -8,7 +8,7 @@ import CarritoTotal from '../components/carritoTotal';
 import { CarritoContext } from '../context/carritoContext';
 
 export default function Carrito() {
-
+  const { productosCarrito, agregarProducto } = useContext(CarritoContext);
     return (
         <>
   <div class="site-wrap">
@@ -18,7 +18,7 @@ export default function Carrito() {
 
     <div class="site-section">
       <div class="container">
-        <CarritoProducts/>
+        <CarritoProducts productos={productosCarrito} />
 
         <CarritoTotal/>
       </div>

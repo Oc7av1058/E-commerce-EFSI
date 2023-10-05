@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 export default function DetalleProducto() {
     const { id } = useParams();
     const { producto, getProductosById } = useContext(ProductoContext);    
-
+    
     useEffect(() => {
         console.log("el id que me esta llegando", id);
         getProductosById(id);        
