@@ -9,9 +9,14 @@ import { CarritoContext } from '../context/carritoContext';
 
 export default function Carrito() {
   const { productosCarrito, agregarProducto } = useContext(CarritoContext);
-    return (
+  console.log("productosCarrito:", productosCarrito);
+    
+  return (
         <>
-  <div class="site-wrap">
+        {!productosCarrito ? (
+        <div>loading</div>
+):(
+      <div class="site-wrap">
     
 
     {/*aca va el titulo de la pagina en la que estamos (carrito) */}
@@ -26,6 +31,7 @@ export default function Carrito() {
 
     
   </div>
+)}
       </>
 
     )

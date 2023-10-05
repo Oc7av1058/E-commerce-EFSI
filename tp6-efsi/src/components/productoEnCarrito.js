@@ -1,19 +1,27 @@
 import react from 'react';
+import React, { useContext, useEffect } from 'react'
 import { Link, Outlet } from "react-router-dom";
+import { CarritoContext } from '../context/carritoContext';
 
 export default function ProductoEnCarrito({producto}) {
-
-    return(
+  const { eliminarProducto } = useContext(CarritoContext);
+  const { id, title, description, price, category, images } = producto || {};
+  const handleOnClick = ()=>{
+    eliminarProducto(id);
+  }
+  return(
 <>
-
+{!producto ? (
+<div>loading</div>
+):(
                    <tr>
-                    <td class="product-thumbnail">
-                      <img src="images/cloth_1.jpg" alt="Image" class="img-fluid"/>
+                    <td class="container1">
+                      <img src={images[0]} alt="Image" class="container2" width="100%" height="auto" />
                     </td>
                     <td class="product-name">
-                      <h2 class="h5 text-black">Top Up T-Shirt</h2>
+                      <h2 class="h5 text-black">{title}</h2>
                     </td>
-                    <td>$49.00</td>
+                    <td>${price}</td>
                     <td>
                       <div class="input-group mb-3 styleCarrito" >
                         <div class="input-group-prepend">
@@ -27,10 +35,10 @@ export default function ProductoEnCarrito({producto}) {
 
                     </td>
                     <td>$49.00</td>
-                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
+                    <td><button onClick={handleOnClick} class="btn btn-primary btn-sm">X</button></td>
                   </tr>
 
-                  
+)}               
 </>
 
 )

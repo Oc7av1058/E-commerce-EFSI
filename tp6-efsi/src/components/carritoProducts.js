@@ -2,7 +2,7 @@ import react from 'react';
 import { Link, Outlet } from "react-router-dom";
 import ProductoEnCarrito from './productoEnCarrito';
 export default function CarritoProducts({productos}) {
-
+  console.log("productos en carrito", productos);
     return(
 <>
 <div class="row mb-5">

@@ -23,9 +23,9 @@ export default function InfoProducto({producto}) {
 <div class="row px-xl-5">
             <div class="col-lg-5 pb-5">
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner border producto">
+                    <div class="">
                         <div class="carousel-item active">
-                            <img class="" src={images[1]} alt="imagesdfsdf"/>                          
+                            <img class="carousel-inner border " src={images[1]} alt="imagesdfsdf" height="300px" whith="auto"/>                          
                         </div>
                     </div>
                 </div>          
