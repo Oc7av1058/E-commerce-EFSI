@@ -5,8 +5,7 @@ export default function CarritoProducts({productos}) {
   console.log("productos en carrito", productos);
     return(
 <>
-<div class="row mb-5">
-          <form class="col-md-12" method="post">
+<div class="row mb-5">          
             <div class="site-blocks-table">
               <table class="table table-bordered">
                 <thead>
@@ -30,8 +29,7 @@ export default function CarritoProducts({productos}) {
                   
                 </tbody>
               </table>
-            </div>
-          </form>
+            </div>          
         </div>
 </>
 

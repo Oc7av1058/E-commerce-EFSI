@@ -3,6 +3,9 @@ import axios from 'axios';
 export const ProductoContext = createContext();
 
 const ProductoProvider = (props) => {
+    const KEY_PRODUCTOS="productos";
+    const KEY_PRODUCTO="producto";
+    const KEY_PRODUCTOS_FILTRADOS ="filtrados";
     const [productos, setProductos] = useState([]);
     const [producto, setProducto] = useState(null);
     const [productosFiltrados, setProductosFiltrados] = useState([]);
@@ -10,8 +13,10 @@ const ProductoProvider = (props) => {
         await axios
             .get("https://dummyjson.com/products")
             .then((result) => {
-
+                
                 setProductos(result.data.products);
+                let jsonProductos = JSON.stringify(productos);
+                localStorage.setItem(KEY_PRODUCTOS, jsonProductos); //no se si esta bien hacer así
                 
             })
             .catch((error) => {
