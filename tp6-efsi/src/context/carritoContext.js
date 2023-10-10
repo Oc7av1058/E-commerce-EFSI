@@ -9,13 +9,14 @@ const CarritoProvider = (props) => {
         setProductosCarrito([...productosCarrito,producto]);
     }
 
-    const eliminarProducto =(id) =>{
+    const eliminarProducto = async(id) =>{
         console.log("estoy en eliminarProducto y este es el id", id)
         let productoAux = productosCarrito;
         console.log(productoAux, "productosAux antes del filter");
-        productoAux= productoAux.filter(id);
+        productoAux= productoAux.filter((producto)=> producto.id !== id);
         console.log(productoAux, "productosAux despues del filter");
-            //no anda tiene que usar la api, no filtrar
+        setProductosCarrito(productoAux);
+        //no anda tiene que usar la api, no filtrar
 
     }
 
@@ -40,7 +41,8 @@ const CarritoProvider = (props) => {
         <CarritoContext.Provider
             value={{         
                 productosCarrito,
-                agregarProducto
+                agregarProducto,
+                eliminarProducto
             }
             }
         >
