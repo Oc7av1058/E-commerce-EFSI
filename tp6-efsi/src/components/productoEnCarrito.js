@@ -22,20 +22,20 @@ export default function ProductoEnCarrito({producto}) {
                       <h2 class="h5 text-black">{title}</h2>
                     </td>
                     <td>${price}</td>
-                    <td>
-                      <div class="input-group mb-3 styleCarrito" >
+                    {/*<td>
+                       <div class="input-group mb-3 styleCarrito" >
                         <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                         <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
                         </div>
                         <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"/>
                         <div class="input-group-append">
                           <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
                         </div>
                       </div>
-
+                    
                     </td>
-                    <td>$49.00</td>
-                    <td><button onClick={handleOnClick} class="btn btn-primary btn-sm">X</button></td>
+                    <td>$49.00</td> */}
+                    <td><button onClick={handleOnClick} class="btn btn-primary btn-sm BotonMateo">X</button></td>
                   </tr>
 
 )}               
