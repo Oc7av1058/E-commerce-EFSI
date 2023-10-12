@@ -5,21 +5,11 @@ export const CarritoContext = createContext();
 
 const CarritoProvider = (props) => {
     const KEY_CARRITO= "carrito";
-    const [productosCarrito, setProductosCarrito] = useState([]);
-
-    useEffect(() => {
-        let objeto= traerObjeto(KEY_CARRITO);
-        console.log(objeto+"objeto");
-        console.log(KEY_CARRITO+"key");
-        if(objeto!=null){
-        setProductosCarrito(objeto);
-        }
-        
-    }, []); 
+    let objeto= localStorage.getItem(KEY_CARRITO) ? JSON.parse(localStorage.getItem(KEY_CARRITO)) : [];        
+    const [productosCarrito, setProductosCarrito] = useState(objeto);    
 
     const agregarProducto = async (producto) =>{
-        setProductosCarrito([...productosCarrito,producto]);
-        guardarObjeto(productosCarrito, KEY_CARRITO);
+        setProductosCarrito([...productosCarrito,producto]);        
     }
 
     const eliminarProducto = async(id) =>{
@@ -29,11 +19,13 @@ const CarritoProvider = (props) => {
         productoAux= productoAux.filter((producto)=> producto.id !== id);
         console.log(productoAux, "productosAux despues del filter");
         setProductosCarrito(productoAux);
-        guardarObjeto(productosCarrito, KEY_CARRITO); //en teoría esto debería pisar lo que había con la key antes y guardar el nuevo con el producto eliminado
-
         //no anda tiene que usar la api, no filtrar
 
     }
+
+    useEffect(()=>{
+        guardarObjeto(productosCarrito, KEY_CARRITO); //en teoría esto debería pisar lo que había con la key antes y guardar el nuevo con el producto eliminado
+    },[productosCarrito])
 
     {/* 
     const getCategorias = async () =>{        
@@ -52,21 +44,10 @@ const CarritoProvider = (props) => {
    }, []); */}
 
    
-   const guardarObjeto = async (objeto, key) => {
-    let jsonProductos = await JSON.stringify(objeto);
-    await localStorage.setItem(key, jsonProductos);
+   const guardarObjeto = (objeto, key) => {
+    let jsonProductos = JSON.stringify(objeto);
+    localStorage.setItem(key, jsonProductos);
 }
-const traerObjeto = async (key) =>{
-
-    let objeto = await localStorage.getItem(key);
-    objeto=await JSON.parse(objeto);
-    
-    return objeto;
-}
-{/*const eliminarObjeto = async (key) =>{
-
-    localStorage.removeItem(key)
-}*/}
 
 
     return (

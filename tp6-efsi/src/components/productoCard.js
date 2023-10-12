@@ -1,13 +1,19 @@
-import react from 'react';
-import { Link, Outlet } from "react-router-dom";
+import react, {useContext} from 'react';
+import { CarritoContext } from '../context/carritoContext';
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
-export default function ProductoCard(producto) {
+export default function ProductoCard({producto}) {
     //console.log("producto", producto.producto);
-    
-    const { id, title, description, price, category, images } = producto.producto;
+    const navigate = useNavigate ();
+    const { id, title, price, images } = producto;
     console.log("el id es", id);
     console.log(images);
     console.log(title);
+    const {agregarProducto} = useContext(CarritoContext);
+    const handleOnClick = async ()=>{
+        await agregarProducto(producto);
+        navigate("/carrito");
+    }
     return (
         <>
             
@@ -23,7 +29,7 @@ export default function ProductoCard(producto) {
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <Link to={`/detalleProducto/${id}`}   class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</Link>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        <button onClick={handleOnClick} class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
                     </div>
                 </div>
             
