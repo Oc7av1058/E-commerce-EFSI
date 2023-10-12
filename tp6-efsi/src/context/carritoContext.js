@@ -7,7 +7,6 @@ const CarritoProvider = (props) => {
     const KEY_CARRITO= "carrito";
     let objeto= localStorage.getItem(KEY_CARRITO) ? JSON.parse(localStorage.getItem(KEY_CARRITO)) : [];        
     const [productosCarrito, setProductosCarrito] = useState(objeto);    
-
     const agregarProducto = async (producto) =>{
         setProductosCarrito([...productosCarrito,producto]);        
     }
@@ -19,6 +18,7 @@ const CarritoProvider = (props) => {
         productoAux= productoAux.filter((producto)=> producto.id !== id);
         console.log(productoAux, "productosAux despues del filter");
         setProductosCarrito(productoAux);
+
         //no anda tiene que usar la api, no filtrar
 
     }

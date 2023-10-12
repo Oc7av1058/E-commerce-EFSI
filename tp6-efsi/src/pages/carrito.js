@@ -25,7 +25,7 @@ export default function Carrito() {
       <div class="container">
         <CarritoProducts productos={productosCarrito} />
 
-        <CarritoTotal/>
+        <CarritoTotal productos={productosCarrito}/>
       </div>
     </div>
 
