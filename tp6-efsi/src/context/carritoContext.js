@@ -4,15 +4,27 @@ import axios from 'axios';
 export const CarritoContext = createContext();
 
 const CarritoProvider = (props) => {
+    const [total, setTotal] = useState(0);
     const KEY_CARRITO= "carrito";
     let objeto= localStorage.getItem(KEY_CARRITO) ? JSON.parse(localStorage.getItem(KEY_CARRITO)) : [];        
     const [productosCarrito, setProductosCarrito] = useState(objeto);    
     const agregarProducto = async (producto) =>{
         setProductosCarrito([...productosCarrito,producto]);        
     }
+    const calculartotal =  (productos) =>{
+        let total=0;
+        productos.map((prod) => {
+                            
+          total += prod.price;
+          
+    
+          console.log(total);
+        })
+       setTotal(total)
+    }
 
     const eliminarProducto = async(id) =>{
-        console.log("estoy en eliminarProducto y este es el id", id)
+        console.log("estoy en eliminarProducto y este es el id", id);
         let productoAux = productosCarrito;
         console.log(productoAux, "productosAux antes del filter");
         productoAux= productoAux.filter((producto)=> producto.id !== id);
@@ -55,7 +67,10 @@ const CarritoProvider = (props) => {
             value={{         
                 productosCarrito,
                 agregarProducto,
-                eliminarProducto
+                eliminarProducto,
+                calculartotal,
+                total,
+                setTotal
             }
             }
         >
@@ -63,5 +78,6 @@ const CarritoProvider = (props) => {
         </CarritoContext.Provider>
     ) 
 }
+
 
 export default CarritoProvider;

@@ -25,6 +25,7 @@ export default function Layout() {
                                 </div>
                             </div> */}
                             <Link to="/contacto" class="nav-item nav-link">contacto</Link>
+                            <Link to="/carrito" class="nav-item nav-link">carrito</Link>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             <a href="" class="nav-item nav-link">Login</a>

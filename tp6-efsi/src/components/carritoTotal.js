@@ -1,22 +1,18 @@
-import react, { useEffect } from 'react';
+import react, { useEffect, useState, useContext } from 'react';
 import { Link, Outlet } from "react-router-dom";
+import { CarritoContext } from '../context/carritoContext';
 
 export default function CarritoTotal({productos}) {
   console.log("productos en carrito", productos);
-  let total = 0;
+  const { total, calculartotal, setTotal } = useContext(CarritoContext);
 
 
   useEffect(()=>{
-    calculartotal();
+    calculartotal(productos);
+   
 },[productos])
 
-  const calculartotal =  (productos, total) =>{
-    productos.map((prod) => {
-                        
-      total += prod.price;
-      
-    })
-}
+
     return(
 <>
 <div class="row">
@@ -30,7 +26,7 @@ export default function CarritoTotal({productos}) {
                 </div>
                 <div class="row mb-3">
                   <div class="col-md-6">
-                    <span class="text-black">Subtotal</span>
+                    <span class="text-black">Sin IVA</span>
                   </div>
                   <div class="col-md-6 text-right">
                     <strong class="text-black">{total}</strong>
@@ -41,7 +37,7 @@ export default function CarritoTotal({productos}) {
                     <span class="text-black">Total</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">{total}</strong>
+                    <strong class="text-black">{total*1.21}</strong>
                   </div>
                 </div>
 

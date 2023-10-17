@@ -4,11 +4,13 @@ import { Link, Outlet } from "react-router-dom";
 import { CarritoContext } from '../context/carritoContext';
 
 export default function ProductoEnCarrito({producto}) {
-  const { eliminarProducto } = useContext(CarritoContext);
+  const { eliminarProducto, calculartotal, productosCarrito } = useContext(CarritoContext);
   const { id, title, description, price, category, images } = producto || {};
   const handleOnClick = ()=>{
     eliminarProducto(id);
+    calculartotal(productosCarrito )
   }
+  
   return(
 <>
 {!producto ? (
